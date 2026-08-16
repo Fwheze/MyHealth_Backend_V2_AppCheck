@@ -24,7 +24,13 @@ if (!OPENAI_API_KEY) {
   console.log('✅ OPENAI_API_KEY loaded');
 }
 
-const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
+let openai = null;
+if (OPENAI_API_KEY && OPENAI_API_KEY.startsWith('sk-')) {
+  openai = new OpenAI({ apiKey: OPENAI_API_KEY });
+  console.log('✅ OpenAI client initialized');
+} else {
+  console.warn('⚠️ OpenAI client NOT initialized - will start server anyway');
+}
 
 // Initialize Firebase Admin for App Check verification
 let firebaseInitialized = false;
