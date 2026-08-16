@@ -1,0 +1,18 @@
+
+# One-click deploy to Render.com
+services:
+  - type: web
+    name: myhealth-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: APP_SECRET
+        value: myhealth_secret_123
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
+      - key: ENABLE_APP_CHECK
+        value: false
