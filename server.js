@@ -19,8 +19,9 @@ const FIREBASE_SERVICE_ACCOUNT_JSON = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
 const ENABLE_APP_CHECK = process.env.ENABLE_APP_CHECK === 'true'; // Set to true after Firebase setup
 
 if (!OPENAI_API_KEY) {
-  console.error('❌ Missing OPENAI_API_KEY in .env');
-  process.exit(1);
+  console.warn('⚠️ OPENAI_API_KEY not set - check Render Environment tab');
+} else {
+  console.log('✅ OPENAI_API_KEY loaded');
 }
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
